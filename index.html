@@ -6,9 +6,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Monoton&family=Fredericka+the+Great&display=swap" rel="stylesheet">
 
 <title>BeFAntastic</title>
- <link rel="icon" href=
-"icons.png"
-        type="image/x-icon" />
+ <link rel="manifest" href="manifest.json">
+ <link rel="icon" href="icons.png" type="image/x-icon" />
 <style>
   body {
     margin: 0;
@@ -505,6 +504,10 @@ exitBtn.addEventListener('click', () => {
   navButtons.style.display = 'none';
   endMessage.style.display = "none";
 });
+	if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+    .then(() => console.log("Service Worker Registered"));
+}
 </script>
 </body>
 </html>
