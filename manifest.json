@@ -1,8 +1,0 @@
-{
-  "name": "BeFAntastic",
-  "short_name": "BeFAntastic",
-  "start_url": "index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#4CAF50"
-}
