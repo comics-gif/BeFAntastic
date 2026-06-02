@@ -7,7 +7,7 @@
 
 <title>BeFAntastic</title>
  <link rel="manifest" href="manifest.json">
- <link rel="icon" href="Cover/icons.png" type="image/png" />
+ <link rel="icon" href="icons.png" type="image/x-icon" />
 <style>
   body {
     margin: 0;
@@ -177,9 +177,53 @@
   .nav-buttons button:hover {
     background: #e6b800;
   }
+  
+
+#landingPage{
+  position: fixed;
+  inset:0;
+  background:url('Cover/cc.png') center center / cover no-repeat;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 5000;
+}
+
+#homeImage{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#enterBtn{
+    position:absolute;
+    right:80px;
+    bottom:80px;
+
+    padding:15px 50px;
+    font-size:24px;
+    font-weight:bold;
+
+    border:none;
+    border-radius:12px;
+    background:#FFD700;
+    color:#111;
+    cursor:pointer;
+}
+
+#enterBtn:hover{
+  transform: scale(1.05);
+  background: #e6b800;
+}
 </style>
 </head>
 <body>
+
+<div id="landingPage">
+
+  <button id="enterBtn">START</button>
+</div>
 
 <header>
  <h1>
@@ -436,6 +480,9 @@ let currentComicPages = [];
 let currentPageIndex = 0;
 
 const home = document.getElementById('home');
+const landingPage = document.getElementById('landingPage');
+const homeBtn = document.getElementById('homeBtn');
+const enterBtn = document.getElementById('enterBtn');
 const comicContainer = document.getElementById('comicContainer');
 const navButtons = document.getElementById('navButtons');
 const nextBtn = document.getElementById('nextBtn');
@@ -465,13 +512,6 @@ function updateButtons() {
   exitBtn.style.display =
     currentPageIndex === currentComicPages.length - 1 ? "inline-block" : "none";
 }
-
-document.getElementById("homeBtn").addEventListener("click", () => {
-  home.style.display = 'block';
-  comicContainer.style.display = 'none';
-  navButtons.style.display = 'none';
-  endMessage.style.display = "none";
-});
 
 document.querySelectorAll('.comic-title').forEach(el => {
   el.addEventListener('click', () => {
@@ -505,7 +545,29 @@ exitBtn.addEventListener('click', () => {
   endMessage.style.display = "none";
 });
 
+enterBtn.addEventListener('click', () => {
+  landingPage.style.display = 'none';
+  home.style.display = 'block';
+});
+
+homeBtn.addEventListener('click', (e) => {
+
+  e.preventDefault();
+
+  if (comicContainer.style.display === 'flex') {
+
+    home.style.display = 'block';
+    comicContainer.style.display = 'none';
+    navButtons.style.display = 'none';
+    endMessage.style.display = 'none';
+  }
+
+  else {
+    landingPage.style.display = 'flex';
+    home.style.display = 'none';
+  }
+});
+
 </script>
 </body>
 </html>
-
