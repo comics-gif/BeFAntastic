@@ -217,6 +217,7 @@ html, body{
     position:absolute;
     left:84%;
     top:86%;
+    transform:translate(-50%, -50%);
 
     padding:12px 40px;
     font-size:20px;
@@ -225,9 +226,12 @@ html, body{
     border:none;
     border-radius:12px;
     background:#FFD700;
+
+    transition:0.3s;
 }
+
 #enterBtn:hover{
-	transition: 0.3s ease;
+    transform:translate(-50%, -50%) scale(1.08);
     background:#ffea00;
 }
 	@media (max-width: 768px){
