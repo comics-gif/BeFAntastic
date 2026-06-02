@@ -202,67 +202,42 @@ html, body{
 #landingPage{
     position:fixed;
     inset:0;
-    width:100vw;
-    height:100vh;
+
+    background:url('Cover/cc.png') center center no-repeat;
+    background-size:cover;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#000;
-    z-index:9999;
-}
 
-#homeImage{
-    max-width:100%;
-    max-height:100%;
-    width:auto;
-    height:auto;
-    display:block;
+    z-index:9999;
 }
 
 #enterBtn{
     position:absolute;
+    left:84%;
+    top:86%;
+    transform:translate(-50%,-50%);
 
-    left:50%;
-    top:82%;
-
-    transform:translate(-50%, -50%);
-
-    padding:12px 35px;
-    font-size:18px;
+    padding:12px 40px;
+    font-size:20px;
     font-weight:bold;
 
     border:none;
     border-radius:12px;
-
     background:#FFD700;
-    color:#111;
-
-    cursor:pointer;
-    z-index:10000;
 }
-
 #enterBtn:hover{
   transform: scale(1.05);
   background: #e6b800;
 }
 
-@media (max-width: 768px){
-
-    #enterBtn{
-        top:88%;
-        padding:10px 28px;
-        font-size:16px;
-		
-    }
-
-}
 
 </style>
 </head>
 <body>
 
 <div id="landingPage">
-  <img src="Cover/cc.png" alt="Home Page" id="homeImage">
   <button id="enterBtn">START</button>
 </div>
 
