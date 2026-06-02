@@ -178,50 +178,65 @@
     background: #e6b800;
   }
   
+  #home{
+    display:none;
+}
+
+header{
+    display:none;
+}
+
+body{
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100vh;
+}
 
 #landingPage{
-  position: fixed;
-  inset:0;
-  background:url('Cover/cc.png') center center / cover no-repeat;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 5000;
+    position:fixed;
+    inset:0;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 #homeImage{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width:100vw;
+    height:100vh;
+    object-fit:cover; /* fill entire screen */
+    display:block;
 }
 
 #enterBtn{
     position:absolute;
-    right:80px;
-    bottom:80px;
+    left:50%;
+    top:82%; /* adjust kung gusto mo mas mataas/mababa */
+    transform:translate(-50%, -50%);
+    z-index:9999;
 
     padding:15px 50px;
     font-size:24px;
     font-weight:bold;
-
     border:none;
     border-radius:12px;
     background:#FFD700;
     color:#111;
     cursor:pointer;
 }
-
-#enterBtn:hover{
-  transform: scale(1.05);
-  background: #e6b800;
-}
 </style>
 </head>
 <body>
 
 <div id="landingPage">
-
+  <img src="Cover/cc.png" alt="Home Page" id="homeImage">
   <button id="enterBtn">START</button>
 </div>
 
@@ -257,6 +272,8 @@
 </div>
 
 <script>
+
+document.body.style.overflow = 'hidden';
 const comics = {
   comic1: [
     { img: 'Algebra/1.png' },
@@ -479,6 +496,7 @@ const comics = {
 let currentComicPages = [];
 let currentPageIndex = 0;
 
+const header = document.querySelector('header');
 const home = document.getElementById('home');
 const landingPage = document.getElementById('landingPage');
 const homeBtn = document.getElementById('homeBtn');
@@ -546,8 +564,12 @@ exitBtn.addEventListener('click', () => {
 });
 
 enterBtn.addEventListener('click', () => {
-  landingPage.style.display = 'none';
-  home.style.display = 'block';
+    landingPage.style.display = 'none';
+
+    header.style.display = 'flex';
+    home.style.display = 'block';
+
+    document.body.style.overflow = 'auto';
 });
 
 homeBtn.addEventListener('click', (e) => {
@@ -564,8 +586,15 @@ homeBtn.addEventListener('click', (e) => {
 
   else {
     landingPage.style.display = 'flex';
+
+    header.style.display = 'none';
     home.style.display = 'none';
-  }
+
+    comicContainer.style.display = 'none';
+    navButtons.style.display = 'none';
+
+    document.body.style.overflow = 'hidden';
+}
 });
 
 </script>
