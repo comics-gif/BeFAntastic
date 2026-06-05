@@ -552,9 +552,13 @@ function updateButtons() {
 
 document.querySelectorAll('.comic-title').forEach(el => {
   el.addEventListener('click', () => {
+
+    homeBtn.textContent = "Topics";
+
     const key = el.dataset.comic;
     currentComicPages = comics[key];
     loadPage(0);
+
     home.style.display = 'none';
     comicContainer.style.display = 'flex';
     navButtons.style.display = 'flex';
@@ -588,32 +592,38 @@ enterBtn.addEventListener('click', () => {
     header.style.display = 'flex';
     home.style.display = 'block';
 
+    homeBtn.textContent = "Home";
+
     document.body.style.overflow = 'auto';
 });
 
 homeBtn.addEventListener('click', (e) => {
 
-  e.preventDefault();
+    e.preventDefault();
 
-  if (comicContainer.style.display === 'flex') {
+    if (comicContainer.style.display === 'flex') {
 
-    home.style.display = 'block';
-    comicContainer.style.display = 'none';
-    navButtons.style.display = 'none';
-    endMessage.style.display = 'none';
-  }
+        // Nasa comic → balik sa Topics
+        homeBtn.textContent = "Home";
 
-  else {
-    landingPage.style.display = 'flex';
+        home.style.display = 'block';
+        comicContainer.style.display = 'none';
+        navButtons.style.display = 'none';
+        endMessage.style.display = 'none';
 
-    header.style.display = 'none';
-    home.style.display = 'none';
+    } else {
 
-    comicContainer.style.display = 'none';
-    navButtons.style.display = 'none';
+        // Nasa Topics → balik sa Landing Page
+        landingPage.style.display = 'flex';
 
-    document.body.style.overflow = 'hidden';
-}
+        header.style.display = 'none';
+        home.style.display = 'none';
+
+        comicContainer.style.display = 'none';
+        navButtons.style.display = 'none';
+
+        document.body.style.overflow = 'hidden';
+    }
 });
 
 </script>
